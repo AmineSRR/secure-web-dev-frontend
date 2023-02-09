@@ -7,8 +7,7 @@ export async function load({ locals, cookies }) {
     let token = cookies.get('jwt')
     console.log(token)
     if (token) {
-        //const articles = await api.get(`locations`, token);
-        //const user = await api.get('users/me',token);
+
 
         const [articles, user] = await Promise.all([
             api.get(`locations`, token),
@@ -62,7 +61,6 @@ export const actions = {
         console.log('------------')
 
         await api.del(`locations/${id}`, cookies.get('jwt'));
-        //throw redirect(307, '/');
     },
 
     editLocation: async ({ cookies,url,request }) => {
